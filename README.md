@@ -11,7 +11,6 @@ The project is to fill the need of filtering the useless data coming from Fireho
 No extra SAP software is required to run this application. You just need to have administrator access to a Cloud Foundry installation and the [admin-ui](https://github.com/cloudfoundry-incubator/admin-ui) already deployed as an application. 
 
 ## Getting started
-- clone the repository
 - create a `manifest.yml` file following the example with your configuration settings
 - push the application on cloud foundry in the same space where the admin-ui is deployed
 - you can now use the nozzle url instead of the default doppler endpoint in the admin-ui by setting the property `doppler_logging_endpoint_override` in the admin-ui configuration. [More info at the admin-ui project page](https://github.com/cloudfoundry-incubator/admin-ui/blob/master/README.md#administration-ui-configuration)
@@ -30,4 +29,4 @@ No extra SAP software is required to run this application. You just need to have
 Please open an issue or a pull request
 
 ## License
-The project is released with the [Apache2.0](https://www.apache.org/licenses/LICENSE-2.0) license
+The project is released with the [Apache2.0 license](https://github.com/SAP/cf-admin-ui-nozzle/blob/master/LICENSE)
