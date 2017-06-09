@@ -1,0 +1,4 @@
+bin/*
+.project
+.idea/
+manifest.yml

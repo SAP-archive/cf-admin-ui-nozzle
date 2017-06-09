@@ -1,0 +1,68 @@
+{
+	"ImportPath": "github.com/SAP/cf-admin-ui-nozzle",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/alecthomas/template",
+			"Rev": "a0175ee3bccc567396460bf5acd36800cb10c49c"
+		},
+		{
+			"ImportPath": "github.com/alecthomas/template/parse",
+			"Rev": "a0175ee3bccc567396460bf5acd36800cb10c49c"
+		},
+		{
+			"ImportPath": "github.com/alecthomas/units",
+			"Rev": "2efee857e7cfd4f3d0138cc3cbb1b4966962b93a"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/noaa",
+			"Comment": "v2.0.0-11-g89f0843",
+			"Rev": "89f0843d0ab59863cc78fc44ca5e4ed8c986677e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/noaa/consumer",
+			"Comment": "v2.0.0-11-g89f0843",
+			"Rev": "89f0843d0ab59863cc78fc44ca5e4ed8c986677e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/noaa/consumer/internal",
+			"Comment": "v2.0.0-11-g89f0843",
+			"Rev": "89f0843d0ab59863cc78fc44ca5e4ed8c986677e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/noaa/errors",
+			"Comment": "v2.0.0-11-g89f0843",
+			"Rev": "89f0843d0ab59863cc78fc44ca5e4ed8c986677e"
+		},
+		{
+			"ImportPath": "github.com/cloudfoundry/sonde-go/events",
+			"Rev": "78019103037ae46207993c8816e970d85bf1a9e4"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/gogoproto",
+			"Comment": "v0.4-8-g30433562",
+			"Rev": "30433562cfbf487fe1df7cd26c7bab168d2f14d0"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/proto",
+			"Comment": "v0.4-8-g30433562",
+			"Rev": "30433562cfbf487fe1df7cd26c7bab168d2f14d0"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/protoc-gen-gogo/descriptor",
+			"Comment": "v0.4-8-g30433562",
+			"Rev": "30433562cfbf487fe1df7cd26c7bab168d2f14d0"
+		},
+		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Comment": "v1.1.0-29-ga91eba7",
+			"Rev": "a91eba7f97777409bc2c443f5534d41dd20c5720"
+		},
+		{
+			"ImportPath": "gopkg.in/alecthomas/kingpin.v2",
+			"Comment": "v2.2.4",
+			"Rev": "7f0871f2e17818990e4eed73f9b5c2f429501228"
+		}
+	]
+}
