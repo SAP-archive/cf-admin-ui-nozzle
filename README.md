@@ -8,11 +8,21 @@ The filters has been tailored to reduce load on the [admin-ui](https://github.co
 
 The project is to fill the need of filtering the useless data coming from Firehose that hits the admin-ui performance. When Firehose will support fine filtering options this application will not be necessary anymore.
 
-No extra SAP software is required to run this application. You just need to have administrator access to a Cloud Foundry installation and the [admin-ui](https://github.com/cloudfoundry-incubator/admin-ui) already deployed as an application. 
+
 
 ## Getting started
-- create a `manifest.yml` file following the example with your configuration settings
-- push the application on cloud foundry in the same space where the admin-ui is deployed
+
+### Prerequisites
+
+You need the [admin-ui](https://github.com/cloudfoundry-incubator/admin-ui) deployed and running. It does not matter if the admin-ui is deployed on Cloud Foundry or not, as long as there is
+network connectivity between the admin-ui and other Cloud Foundry applications.
+
+No other SAP software is required to run this application. 
+
+### Deployment
+
+- create an application manifest `manifest.yml` file starting from the example using the configuration parameters as described in the following session
+- push the application on Cloud Foundry
 - you can now use the nozzle url instead of the default doppler endpoint in the admin-ui by setting the property `doppler_logging_endpoint_override` in the admin-ui configuration. [More info at the admin-ui project page](https://github.com/cloudfoundry-incubator/admin-ui/blob/master/README.md#administration-ui-configuration)
 
 
