@@ -8,7 +8,13 @@ The filters has been tailored to reduce load on the [admin-ui](https://github.co
 
 The project is to fill the need of filtering the useless data coming from Firehose that hits the admin-ui performance. When Firehose will support fine filtering options this application will not be necessary anymore.
 
-
+### NOTE:
+The `ValueMetric` default filtering logic has changed from blacklist to whitelist to reduce even more the load reaching the admin-ui. This will also prevent newly introduced metrics to flood the application.
+The downside of this setup is that the admin-ui `Components` tab will not show data anymore. You can still keep the old filtering method by setting
+```
+VALUEMETRIC_FILTER: "blacklist"
+```
+in the manifest file.
 
 ## Getting started
 

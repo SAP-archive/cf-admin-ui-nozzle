@@ -10,3 +10,4 @@ applications:
     DOPPLER_ENDPOINT: wss://doppler.cf.bosh-lite.com:443
     SKIP_SSL_VALIDATION: true
     DEBUG: true
+    VALUEMETRIC_FILTER: "whitelist"

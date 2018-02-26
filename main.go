@@ -24,43 +24,98 @@ const wss_timeout = 30 * time.Second
 
 var eventKept int64
 var eventDiscarded int64
+var whitelistedRepNames map[string]struct{}
+var whitelistedGorouterNames map[string]struct{}
 
 var (
 	dopplerEndpoint   = kingpin.Flag("doppler-endpoint", "Doppler endpoint").Default("wss://doppler.cf.bosh-lite.com:443").OverrideDefaultFromEnvar("DOPPLER_ENDPOINT").String()
 	skipSSLValidation = kingpin.Flag("skip-ssl-validation", "Please don't").Default("false").OverrideDefaultFromEnvar("SKIP_SSL_VALIDATION").Bool()
 	debug             = kingpin.Flag("debug", "Debug logging").Default("false").OverrideDefaultFromEnvar("DEBUG").Bool()
+	valueMetricFilter = kingpin.Flag("valuemetric-filter", "Blacklist or Whitelist").Default("whitelist").OverrideDefaultFromEnvar("VALUEMETRIC_FILTER").String()
 )
 
 func isLatency(name string) bool {
 	return name == "latency" || name == "route_lookup_time" || strings.HasPrefix(name, "latency.")
 }
 
-func keepEvent(e *events.Envelope) bool {
+func keepEvent(e *events.Envelope, useWhitelist bool) bool {
+
+	if whitelistedGorouterNames ==nil{
+		whitelistedGorouterNames = make(map[string]struct{})
+		whitelistedGorouterNames["numCPUS"] = struct{}{}
+		whitelistedGorouterNames["memoryStats.numBytesAllocated"] = struct{}{}
+		whitelistedGorouterNames["uptime"] = struct{}{}
+	}
+	if whitelistedRepNames ==nil {
+		whitelistedRepNames = make(map[string]struct{})
+		whitelistedRepNames["numCPUS"] = struct{}{}
+		whitelistedRepNames["memoryStats.numBytesAllocated"] = struct{}{}
+		whitelistedRepNames["memoryStats.numBytesAllocatedHeap"] = struct{}{}
+		whitelistedRepNames["memoryStats.numBytesAllocatedStack"] = struct{}{}
+		whitelistedRepNames["CapacityTotalContainers"] = struct{}{}
+		whitelistedRepNames["CapacityRemainingContainers"] = struct{}{}
+		whitelistedRepNames["ContainerCount"] = struct{}{}
+		whitelistedRepNames["CapacityTotalMemory"] = struct{}{}
+		whitelistedRepNames["CapacityRemainingMemory"] = struct{}{}
+		whitelistedRepNames["CapacityTotalDisk"] = struct{}{}
+		whitelistedRepNames["CapacityRemainingDisk"] = struct{}{}
+		whitelistedRepNames["logSenderTotalMessagesRead"] = struct{}{}
+		whitelistedRepNames["numGoRoutines"] = struct{}{}
+		whitelistedRepNames["memoryStats.numMallocs"] = struct{}{}
+		whitelistedRepNames["memoryStats.numFrees"] = struct{}{}
+	}
 
 	eventType := e.GetEventType()
 
 	switch eventType {
 	case events.Envelope_ValueMetric:
-		if e.GetOrigin() == "gorouter" && isLatency(e.GetValueMetric().GetName()) {
+		origin := e.GetOrigin()
+		valueName := e.GetValueMetric().GetName()
+
+		if useWhitelist {
+			if origin == "rep" {
+				if _, ok := whitelistedRepNames[valueName]; ok {
+					return true
+				}
+			} else if origin == "gorouter" {
+				if _, ok := whitelistedGorouterNames[valueName]; ok {
+					return true
+				}
+			}
 			return false
-		} else {
-			return true
+
+		} else  {
+
+			if origin == "gorouter" && isLatency(valueName) {
+				return false
+			} else if origin == "grootfs" {
+				return false
+			} else {
+				return true
+			}
 		}
 
 	case events.Envelope_ContainerMetric:
 		return true
 
-	default:
-		return false
 	}
+	return false
 }
 
 func eventProcessor(eventChan <-chan *events.Envelope, parsedEventChan chan *events.Envelope, stopProcessor chan int) {
+	var useWhitelist bool
+	if *valueMetricFilter == "whitelist" {
+		useWhitelist =true
+	}else if *valueMetricFilter == "blacklist"{
+		useWhitelist =false
+	} else {
+		log.Fatal("Configuration error. VALUEMETRIC_FILTER supports only 'whitelist' or 'blacklist'")
+	}
 
 	for {
 		select {
 		case msg := <-eventChan:
-			if keepEvent(msg) {
+			if keepEvent(msg,useWhitelist) {
 				eventKept++
 				parsedEventChan <- msg
 			} else {
