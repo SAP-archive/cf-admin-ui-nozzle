@@ -1,1 +1,1 @@
-web: admin-ui-nozzle
+web: cf-admin-ui-nozzle
