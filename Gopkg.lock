@@ -21,7 +21,7 @@
   revision = "2efee857e7cfd4f3d0138cc3cbb1b4966962b93a"
 
 [[projects]]
-  digest = "1:ebd341bb616b48f11b1e01b205eb12b420398b33240c698765ebc962ce3a80b1"
+  digest = "1:9148c060d019cb181efbabd6e5858e7727796d62d16f002f23addcf2cc374818"
   name = "github.com/cloudfoundry/noaa"
   packages = [
     ".",
@@ -30,17 +30,19 @@
     "errors",
   ]
   pruneopts = "UT"
-  revision = "89f0843d0ab59863cc78fc44ca5e4ed8c986677e"
+  revision = "a1d4a94e2be6711111893c59538976d07ef7ea98"
+  version = "v2.1.0"
 
 [[projects]]
-  digest = "1:bf37a8db467de8818a7c287eafe04544b8af9237e9f65d5c4bc5c501e3706a7f"
+  branch = "master"
+  digest = "1:e40a214426e6825d5c4067ebbb788c06be08ef657918e45a8f7fc45685431098"
   name = "github.com/cloudfoundry/sonde-go"
   packages = ["events"]
   pruneopts = "UT"
-  revision = "78019103037ae46207993c8816e970d85bf1a9e4"
+  revision = "b33733203bb48d7c56de7cb639d77f78b0449d19"
 
 [[projects]]
-  digest = "1:88308e6e46a053b9fb66165c8472b3726a107a8bff6fe230abf1561ae5f907e5"
+  digest = "1:bfc758d5a03d57d97226fac6934551c01bd76612adb119c177395b057a0a46db"
   name = "github.com/gogo/protobuf"
   packages = [
     "gogoproto",
@@ -48,22 +50,37 @@
     "protoc-gen-gogo/descriptor",
   ]
   pruneopts = "UT"
-  revision = "30433562cfbf487fe1df7cd26c7bab168d2f14d0"
+  revision = "636bf0302bc95575d69441b25a2603156ffdddf1"
+  version = "v1.1.1"
 
 [[projects]]
-  digest = "1:43dd08a10854b2056e615d1b1d22ac94559d822e1f8b6fcc92c1a1057e85188e"
+  digest = "1:7b5c6e2eeaa9ae5907c391a91c132abfd5c9e8a784a341b5625e750c67e6825d"
   name = "github.com/gorilla/websocket"
   packages = ["."]
   pruneopts = "UT"
-  revision = "a91eba7f97777409bc2c443f5534d41dd20c5720"
+  revision = "66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d"
+  version = "v1.4.0"
 
 [[projects]]
-  digest = "1:00f493c23e1be45c78411ef132b84bfd1a68c19ebd9c1a01cdb4e5accd91efa2"
+  branch = "master"
+  digest = "1:aa3d8d42865c42626b5c1add193692d045b3188b1479f0a0a88690d21fe20083"
+  name = "github.com/mailru/easyjson"
+  packages = [
+    ".",
+    "buffer",
+    "jlexer",
+    "jwriter",
+  ]
+  pruneopts = "UT"
+  revision = "60711f1a8329503b04e1c88535f419d0bb440bff"
+
+[[projects]]
+  digest = "1:c06d9e11d955af78ac3bbb26bd02e01d2f61f689e1a3bce2ef6fb683ef8a7f2d"
   name = "gopkg.in/alecthomas/kingpin.v2"
   packages = ["."]
   pruneopts = "UT"
-  revision = "7f0871f2e17818990e4eed73f9b5c2f429501228"
-  version = "v2.2.4"
+  revision = "947dcec5ba9c011838740e680966fd7087a71d0d"
+  version = "v2.2.6"
 
 [solve-meta]
   analyzer-name = "dep"
