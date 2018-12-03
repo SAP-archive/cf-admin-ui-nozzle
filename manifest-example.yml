@@ -11,3 +11,4 @@ applications:
     SKIP_SSL_VALIDATION: true
     DEBUG: true
     VALUEMETRIC_FILTER: "whitelist"
+    GOPACKAGENAME: cf-admin-ui-nozzle
