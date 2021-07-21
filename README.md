@@ -1,3 +1,8 @@
+![](https://img.shields.io/badge/STATUS-NOT%20CURRENTLY%20MAINTAINED-red.svg?longCache=true&style=flat)
+
+# Important Notice
+This public repository is read-only and no longer maintained.
+
 ## Admin-ui-nozzle
 
 This repo contains a [Cloud Foundry](https://www.cloudfoundry.org/platform/) application with a Firehose Nozzle implementation that forwards data to any Firehose client (forwarding their own authentication) and filters
